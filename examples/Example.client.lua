@@ -8,41 +8,33 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 -- local Lib = require(ReplicatedStorage:WaitForChild("Lib"))
 -- In this repo layout, use a ModuleScript copy of roblox/Lib.lua in your game
 
-local Lib --[[ = require(path_to_module_in_your_game) ]]
+-- src-based Lib usage
+-- local Lib = require(ReplicatedStorage:WaitForChild("Lib")) -- if you package src as ModuleScript
+-- or if you keep folder structure, require("src/init") accordingly.
 
 -- DEMO (pseudo):
--- local window = Lib.createWindow({
+-- local lib = Lib.new({ Theme = "Dark" })
+-- local window = lib:CreateWindow({
+--   Title = "Lib", Size = UDim2.fromOffset(470, 340), ToggleKey = Enum.KeyCode.RightShift, StartOpen = true
+-- })
 --   title = "Minha UI",
 --   size = Vector2.new(470, 340),
 --   toggleKey = Enum.KeyCode.RightShift,
 --   startOpen = true,
 -- })
--- local tabMain = window:AddTab("Principal")
--- local secGeneral = tabMain:AddSection("Geral")
--- secGeneral:AddLabel("Bem-vindo à UI!")
--- secGeneral:AddButton("Dizer Olá", function()
---   print("Olá do botão!")
--- end)
+-- local tabMain = window:Tab({ Title = "Principal" })
+-- local secGeneral = tabMain:Section({ Title = "Geral" })
+-- secGeneral:Button({ Title = "Dizer Olá", Callback = function() print("Olá do botão!") end })
 --
--- local toggle = secGeneral:AddToggle("Ativar Coisa", false, function(state)
---   print("Toggle:", state)
--- end)
+-- secGeneral:Toggle({ Title = "Ativar Coisa", Value = false, Callback = function(state) print("Toggle:", state) end })
 --
--- local slider = secGeneral:AddSlider("Velocidade", 0, 100, 50, function(v)
---   print("Slider:", v)
--- end)
+-- secGeneral:Slider({ Title = "Velocidade", Value = { Min = 0, Max = 100, Default = 50 }, Callback = function(v) print("Slider:", v) end })
 --
--- local dropdown = secGeneral:AddDropdown("Modo", {"Clássico","Rápido","Seguro"}, "Clássico", function(opt)
---   print("Dropdown:", opt)
--- end)
+-- secGeneral:Dropdown({ Title = "Modo", Values = {"Clássico","Rápido","Seguro"}, Value = "Clássico", Callback = function(opt) print("Dropdown:", opt) end })
 --
--- local textbox = secGeneral:AddTextbox("Digite algo", "mensagem", function(text)
---   print("Textbox:", text)
--- end)
+-- secGeneral:Input({ Title = "Digite algo", Placeholder = "mensagem", Callback = function(text) print("Textbox:", text) end })
 --
--- local keybind = secGeneral:AddKeybind("Tecla de Toggle", Enum.KeyCode.RightShift, function(kc)
---   print("Keybind trocado para:", kc.Name)
--- end)
+-- secGeneral:Keybind({ Title = "Tecla de Toggle", Value = Enum.KeyCode.RightShift, Callback = function(kc) print("Keybind trocado para:", kc.Name) end })
 
 -- Executor-style (example snippet):
 -- local success, Lib = pcall(function()
