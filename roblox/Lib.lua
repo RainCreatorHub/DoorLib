@@ -1,12 +1,12 @@
 --[[
-  Roblox UI Library (Studio + Executor-friendly)
+  Lib (Studio + Executor-friendly)
   - Fixed window size: 470 x 340
   - Tabs, Sections, and common controls (Buttons, Toggles, Sliders, Dropdowns, Textboxes, Keybinds)
   - Executor-friendly parenting (gethui/CoreGui fallback) and syn.protect_gui if available
 
   Usage (see examples/Example.client.lua):
-    local UILibrary = require(path_to_module)
-    local window = UILibrary.createWindow({
+    local Lib = require(path_to_module)
+    local window = Lib.createWindow({
       title = "Minha UI",
       size = Vector2.new(470, 340),
       toggleKey = Enum.KeyCode.RightShift, -- hotkey to show/hide
@@ -27,7 +27,7 @@ local RunService = game:GetService("RunService")
 
 local function assertClient()
   if not RunService:IsClient() then
-    error("UILibrary must be required from a LocalScript (client)")
+    error("Lib must be required from a LocalScript (client)")
   end
 end
 
@@ -94,8 +94,8 @@ local SECTION_HEADER_HEIGHT = 22
 local CONTROL_HEIGHT = 30
 local CONTROL_GAP = 8
 
-local UILibrary = {}
-UILibrary.__index = UILibrary
+local Lib = {}
+Lib.__index = Lib
 
 local Window = {}
 Window.__index = Window
@@ -134,11 +134,11 @@ local function enableDrag(frame, dragHandle)
 end
 
 -- Window API
-function UILibrary.createWindow(options)
+function Lib.createWindow(options)
   assertClient()
 
   options = options or {}
-  local title = options.title or "UI Library"
+  local title = options.title or "Lib"
   local size = options.size or Vector2.new(470, 340)
   local theme = options.theme or DEFAULT_THEME
   local toggleKey = options.toggleKey or Enum.KeyCode.RightShift
@@ -149,7 +149,7 @@ function UILibrary.createWindow(options)
   local playerGui = player:WaitForChild("PlayerGui")
 
   local screenGui = create("ScreenGui", {
-    Name = "UILibrary",
+    Name = "Lib",
     ResetOnSpawn = false,
     IgnoreGuiInset = true,
     ZIndexBehavior = Enum.ZIndexBehavior.Sibling,
@@ -907,4 +907,4 @@ function Section:AddKeybind(labelText, defaultKeyCode, onChanged)
   }
 end
 
-return UILibrary
+return Lib

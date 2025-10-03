@@ -3,15 +3,15 @@
 
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
--- Adjust the path below to wherever you put UILibrary.lua
--- For example, if you move UILibrary.lua into ReplicatedStorage as a ModuleScript:
--- local UILibrary = require(ReplicatedStorage:WaitForChild("UILibrary"))
--- In this repo layout, use a ModuleScript copy of roblox/UILibrary.lua in your game
+-- Adjust the path below to wherever you put Lib.lua
+-- For example, if you move Lib.lua into ReplicatedStorage as a ModuleScript:
+-- local Lib = require(ReplicatedStorage:WaitForChild("Lib"))
+-- In this repo layout, use a ModuleScript copy of roblox/Lib.lua in your game
 
-local UILibrary --[[ = require(path_to_module_in_your_game) ]]
+local Lib --[[ = require(path_to_module_in_your_game) ]]
 
 -- DEMO (pseudo):
--- local window = UILibrary.createWindow({
+-- local window = Lib.createWindow({
 --   title = "Minha UI",
 --   size = Vector2.new(470, 340),
 --   toggleKey = Enum.KeyCode.RightShift,
@@ -45,11 +45,11 @@ local UILibrary --[[ = require(path_to_module_in_your_game) ]]
 -- end)
 
 -- Executor-style (example snippet):
--- local success, UILibrary = pcall(function()
---   return loadstring(game:HttpGet("https://example.com/UILibrary.lua"))()
+-- local success, Lib = pcall(function()
+--   return loadstring(game:HttpGet("https://example.com/Lib.lua"))()
 -- end)
 -- if success then
---   local window = UILibrary.createWindow({ title = "Minha UI", size = Vector2.new(470, 340), toggleKey = Enum.KeyCode.RightShift })
+--   local window = Lib.createWindow({ title = "Minha UI", size = Vector2.new(470, 340), toggleKey = Enum.KeyCode.RightShift })
 --   local tab = window:AddTab("Principal")
 --   local sec = tab:AddSection("Geral")
 --   sec:AddButton("Olá", function() print("Olá") end)
